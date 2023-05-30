@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Form() {
   return (
-    <div className=" absolute top-[8.3rem] flex justify-center">
-      <div className="text-MarineBlue flex flex-col gap-8 bg-White w-[94%] p-10 rounded-xl shadow-md">
+    <div className="w-full lg:w-auto absolute top-[8.3rem] flex justify-center lg:relative lg:top-0">
+      <div className="text-MarineBlue flex flex-col gap-8 bg-White w-[94%] lg:w-auto p-10 lg:p-0 rounded-xl shadow-md lg:rounded-none lg:shadow-none">
         <div className="header-form">
           <h1 className="font-bold text-[1.9rem]">Personal info</h1>
           <p className="text-CoolGray">
@@ -36,7 +36,7 @@ export default function Form() {
             />
           </div>
         </div>
-        <div className="bg-White fixed bottom-0 left-0 w-full flex justify-end p-5">
+        <div className="bg-White fixed bottom-0 left-0 w-full flex justify-end p-5 lg:relative lg:p-0">
           <button className="bg-MarineBlue text-White p-3 w-[7.5rem] rounded-md">
             Next Step
           </button>

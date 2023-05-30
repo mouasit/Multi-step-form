@@ -4,7 +4,7 @@ import Form from "./Components/Form"
 
 function App() {
   return (
-    <main>
+    <main className="lg:flex">
       <StepsBar />
       <Form />
     </main>
