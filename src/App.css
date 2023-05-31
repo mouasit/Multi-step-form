@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 body{
-  @apply font-Ubuntu bg-Magnolia
+  @apply font-Ubuntu bg-Magnolia lg:flex lg:justify-center items-center h-screen
 }
