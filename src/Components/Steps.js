@@ -32,7 +32,11 @@ export function StepsContainer({ children, className }) {
   return <form className={className}>{children}</form>;
 }
 
-export function StepsControllers({
+export function StepsControllers({ className, children }) {
+  return <div className={className}>{children}</div>;
+}
+
+export function StepsButtons({
   className,
   nextContent,
   nextClassName,
