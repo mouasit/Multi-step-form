@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  @apply font-Ubuntu bg-Magnolia lg:flex lg:justify-center items-center min-h-screen
+body {
+  @apply min-h-screen items-center bg-Magnolia font-Ubuntu lg:flex lg:justify-center;
+}
+
+.active {
+  @apply bg-LightBlue text-MarineBlue;
 }
