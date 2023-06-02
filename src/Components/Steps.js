@@ -6,7 +6,7 @@ export function Steps({ children, className }) {
 
 export function Step({ children, className }) {
   return (
-    <li>
+    <li className="lg:w-full">
       <button className={className}>{children}</button>
     </li>
   );

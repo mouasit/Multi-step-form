@@ -27,19 +27,47 @@ function App() {
           alt="Background Steps Bar"
           className="hidden w-full lg:block"
         />
-        <StepsBar className="absolute top-11 w-full">
-          <ListSteps className="flex items-center justify-center gap-5">
-            <Step className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold text-White">
-              {1}
+        <StepsBar className="absolute top-11 w-full lg:top-[2rem]">
+          <ListSteps className="flex items-center justify-center gap-5 lg:flex-col lg:items-start lg:justify-start lg:gap-6">
+            <Step className="rounded-full lg:flex lg:w-full lg:items-center lg:gap-4 lg:rounded-none lg:pl-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold lg:text-sm text-White lg:h-8 lg:w-8">
+                1
+              </span>
+              <span className="hidden flex-col items-start lg:flex">
+                <span className="uppercase text-CoolGray">step 1</span>
+                <span className="font-bold uppercase text-White">
+                  your info
+                </span>
+              </span>
             </Step>
-            <Step className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold text-White">
-              {2}
+            <Step className="rounded-full lg:flex lg:w-full lg:items-center lg:gap-4 lg:rounded-none lg:pl-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold lg:text-sm text-White lg:h-8 lg:w-8">
+                2
+              </span>
+              <span className="hidden flex-col items-start lg:flex">
+                <span className="uppercase text-CoolGray">step 2</span>
+                <span className="font-bold uppercase text-White">
+                  select plan
+                </span>
+              </span>
             </Step>
-            <Step className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold text-White">
-              {3}
+            <Step className="rounded-full lg:flex lg:w-full lg:items-center lg:gap-4 lg:rounded-none lg:pl-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold lg:text-sm text-White lg:h-8 lg:w-8">
+                3
+              </span>
+              <span className="hidden flex-col items-start lg:flex">
+                <span className="uppercase text-CoolGray">step 3</span>
+                <span className="font-bold uppercase text-White">add-ons</span>
+              </span>
             </Step>
-            <Step className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold text-White">
-              {4}
+            <Step className="rounded-full lg:flex lg:w-full lg:items-center lg:gap-4 lg:rounded-none lg:pl-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-White font-bold lg:text-sm text-White lg:h-8 lg:w-8">
+                4
+              </span>
+              <span className="hidden flex-col items-start lg:flex">
+                <span className="uppercase text-CoolGray">step 4</span>
+                <span className="font-bold uppercase text-White">summary</span>
+              </span>
             </Step>
           </ListSteps>
         </StepsBar>
