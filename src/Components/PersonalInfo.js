@@ -15,7 +15,7 @@ export default function PersonalInfo() {
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            className="rounded-md border-[1px] p-4  outline-none border-LightGray  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -23,7 +23,7 @@ export default function PersonalInfo() {
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
-            className="rounded-md border-[1px] p-4  outline-none border-LightGray  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -31,7 +31,7 @@ export default function PersonalInfo() {
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            className="rounded-md border-[1px] p-4  outline-none border-LightGray  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.6rem] lg:pl-[.9rem] lg:placeholder:font-medium"
           />
         </div>
       </div>

@@ -79,7 +79,7 @@ function App() {
         </StepsBar>
       </div>
       <div className="absolute top-[8.3rem] flex w-full flex-1 justify-center lg:relative lg:top-0 lg:justify-center lg:pt-[2rem]">
-        <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[27.7rem]">
+        <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[30.8rem]">
           <StepsBody>
             <StepsItem>
               <SelectPlan />
@@ -87,7 +87,7 @@ function App() {
           </StepsBody>
           <StepsControllers className="fixed bottom-0 left-0 flex w-full justify-end bg-White p-5 lg:absolute lg:bottom-3 lg:justify-center lg:bg-opacity-0 lg:p-0">
             <StepsButtons
-              className="flex w-full justify-end lg:w-[27.7rem]"
+              className="flex w-full justify-end lg:w-[30.8rem]"
               nextContent="next step"
               nextClassName="w-[7.5rem] rounded-md bg-MarineBlue p-3 text-White capitalize"
               previousContent=""

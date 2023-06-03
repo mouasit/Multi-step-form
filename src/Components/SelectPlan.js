@@ -12,7 +12,7 @@ export default function SelectPlan() {
         </p>
       </div>
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 lg:flex-row">
           <CardPlan
             icon={<IconArcade />}
             type="arcade"
@@ -22,7 +22,7 @@ export default function SelectPlan() {
           <CardPlan icon={<IconAdvanced />} type="advanced" price="$12/mo" />
           <CardPlan icon={<IconPro />} type="pro" price="$15/mo" />
         </div>
-        <div className="flex items-center justify-center gap-8 rounded-lg bg-Magnolia p-5">
+        <div className="flex items-center justify-center gap-8 rounded-lg bg-Alabaster p-3">
           <span className="font-bold capitalize">monthly</span>
           <button
             type="button"
