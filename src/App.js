@@ -82,12 +82,12 @@ function App() {
         <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[27.7rem]">
           <StepsBody>
             <StepsItem>
-              <PersonalInfo />
+              <SelectPlan />
             </StepsItem>
           </StepsBody>
-          <StepsControllers className="fixed bottom-0 left-0 flex w-full bg-White p-5 lg:absolute lg:bg-opacity-0 lg:p-0 justify-end lg:justify-center lg:bottom-3">
+          <StepsControllers className="fixed bottom-0 left-0 flex w-full justify-end bg-White p-5 lg:absolute lg:bottom-3 lg:justify-center lg:bg-opacity-0 lg:p-0">
             <StepsButtons
-              className="w-full lg:w-[27.7rem] flex justify-end"
+              className="flex w-full justify-end lg:w-[27.7rem]"
               nextContent="next step"
               nextClassName="w-[7.5rem] rounded-md bg-MarineBlue p-3 text-White capitalize"
               previousContent=""
