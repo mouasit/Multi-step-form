@@ -13,7 +13,12 @@ export default function SelectPlan() {
       </div>
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-5">
-          <CardPlan icon={<IconArcade />} type="arcade" price="$9/mo" />
+          <CardPlan
+            icon={<IconArcade />}
+            type="arcade"
+            price="$9/mo"
+            active={true}
+          />
           <CardPlan icon={<IconAdvanced />} type="advanced" price="$12/mo" />
           <CardPlan icon={<IconPro />} type="pro" price="$15/mo" />
         </div>
