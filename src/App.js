@@ -15,6 +15,7 @@ import BackgroundMobile from "./assets/bg-sidebar-mobile.svg";
 import BackgroundDesktop from "./assets/bg-sidebar-desktop.svg";
 import SelectPlan from "./Components/SelectPlan";
 import AddOns from "./Components/AddOns";
+import FinishingUp from "./Components/FinishingUp";
 
 function App() {
   return (
@@ -83,7 +84,7 @@ function App() {
         <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[30.8rem]">
           <StepsBody>
             <StepsItem>
-              <AddOns />
+              <FinishingUp />
             </StepsItem>
           </StepsBody>
           <StepsControllers className="fixed bottom-0 left-0 flex w-full justify-end bg-White p-5 lg:absolute lg:bottom-3 lg:justify-center lg:bg-opacity-0 lg:p-0">
