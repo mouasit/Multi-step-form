@@ -72,20 +72,42 @@ export function StepsButtons({
   nextClassName,
   previousContent,
   previousClassName,
+  nameConfirmation,
 }) {
   const dataContext = useContext(StepsContext);
   return (
-    <div className={className}>
+    <div
+      className={`${className} ${
+        dataContext.order > 0 ? "justify-between" : "justify-end"
+      }`}
+    >
+      {dataContext.order > 0 ? (
+        <button
+          type="button"
+          className={previousClassName}
+          onClick={() => {
+            dataContext.setOrder(dataContext.order - 1);
+          }}
+        >
+          {previousContent}
+        </button>
+      ) : null}
       <button
-        className={nextClassName}
+        className={`${nextClassName} ${
+          dataContext.order === dataContext.numberSteps - 1
+            ? "bg-PurplishBlue"
+            : "bg-MarineBlue"
+        }`}
+        type="submit"
         onClick={(e) => {
           e.preventDefault();
-          if (dataContext.order === dataContext.numberSteps - 1)
-            dataContext.setOrder(0);
-          else dataContext.setOrder(dataContext.order + 1);
+          if (dataContext.order !== dataContext.numberSteps - 1)
+            dataContext.setOrder(dataContext.order + 1);
         }}
       >
-        {nextContent}
+        {dataContext.order !== dataContext.numberSteps - 1
+          ? nextContent
+          : nameConfirmation}
       </button>
     </div>
   );

@@ -67,11 +67,12 @@ function App() {
           </StepsBody>
           <StepsControllers className="fixed bottom-0 left-0 flex w-full justify-end bg-White p-5 lg:absolute lg:bottom-3 lg:justify-center lg:bg-opacity-0 lg:p-0">
             <StepsButtons
-              className="flex w-full justify-end lg:w-[30.8rem]"
+              className="flex w-full lg:w-[30.8rem]"
               nextContent="next step"
-              nextClassName="w-[7.5rem] rounded-md bg-MarineBlue p-3 text-White capitalize"
-              previousContent=""
-              previousClassName=""
+              nextClassName="w-[7.5rem] rounded-md p-3 text-White capitalize"
+              previousContent="go back"
+              previousClassName="font-medium capitalize text-CoolGray"
+              nameConfirmation="confirm"
             ></StepsButtons>
           </StepsControllers>
         </StepsContainer>
