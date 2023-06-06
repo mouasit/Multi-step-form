@@ -7,6 +7,6 @@ body {
   @apply min-h-screen items-center bg-Magnolia font-Ubuntu lg:flex lg:justify-center;
 }
 
-.active {
+.active .number {
   @apply bg-LightBlue text-MarineBlue;
 }

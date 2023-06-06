@@ -1,23 +1,53 @@
-import React from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
+
+const StepsContext = createContext();
 
 export function Steps({ children, className }) {
-  return <main className={className}>{children}</main>;
+  const [order, setOrder] = useState(0);
+  const [numberSteps, setNumberSteps] = useState(0);
+  return (
+    <StepsContext.Provider
+      value={{
+        order: order,
+        setOrder: setOrder,
+        numberSteps: numberSteps,
+        setNumberSteps: setNumberSteps,
+      }}
+    >
+      <main className={className}>{children}</main>
+    </StepsContext.Provider>
+  );
 }
 
-export function Step({ children, className }) {
+export function Step({ children, className, index }) {
+  const dataContext = useContext(StepsContext);
   return (
     <li className="lg:w-full">
-      <button className={className}>{children}</button>
+      <button
+        className={`${className} ${
+          dataContext.order === index ? "active" : ""
+        }`}
+        onClick={() => {
+          dataContext.setOrder(index);
+        }}
+      >
+        {children}
+      </button>
     </li>
   );
 }
 
 export function ListSteps({ children, className }) {
+  const dataContext = useContext(StepsContext);
+  useEffect(() => {
+    dataContext.setNumberSteps(children.length);
+  }, [children.length, dataContext]);
   return <ul className={className}>{children}</ul>;
 }
 
 export function StepsBody({ children }) {
-  return <>{children}</>;
+  const dataContext = useContext(StepsContext);
+  return <>{children[dataContext.order]}</>;
 }
 
 export function StepsItem({ children }) {
@@ -43,9 +73,20 @@ export function StepsButtons({
   previousContent,
   previousClassName,
 }) {
+  const dataContext = useContext(StepsContext);
   return (
     <div className={className}>
-      <button className={nextClassName}>{nextContent}</button>
+      <button
+        className={nextClassName}
+        onClick={(e) => {
+          e.preventDefault();
+          if (dataContext.order === dataContext.numberSteps - 1)
+            dataContext.setOrder(0);
+          else dataContext.setOrder(dataContext.order + 1);
+        }}
+      >
+        {nextContent}
+      </button>
     </div>
   );
 }
