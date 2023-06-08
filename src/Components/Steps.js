@@ -5,6 +5,7 @@ const StepsContext = createContext();
 export function Steps({ children, className }) {
   const [order, setOrder] = useState(0);
   const [numberSteps, setNumberSteps] = useState(0);
+  const [confirm, setConfirm] = useState(null);
   return (
     <StepsContext.Provider
       value={{
@@ -12,6 +13,8 @@ export function Steps({ children, className }) {
         setOrder: setOrder,
         numberSteps: numberSteps,
         setNumberSteps: setNumberSteps,
+        confirm: confirm,
+        setConfirm: setConfirm,
       }}
     >
       <main className={className}>{children}</main>
@@ -23,7 +26,6 @@ export function Step({ children, className, index }) {
   const dataContext = useContext(StepsContext);
 
   let order = dataContext.order;
-
   if (dataContext.order === dataContext.numberSteps - 1) order--;
   return (
     <li className="lg:w-full">
@@ -52,6 +54,10 @@ export function StepsBody({ children }) {
 }
 
 export function StepsItem({ children }) {
+  const dataContext = useContext(StepsContext);
+  useEffect(() => {
+    dataContext.setConfirm(() => children.props.confirm);
+  }, [children.props.confirm, dataContext]);
   return <>{children}</>;
 }
 
@@ -106,7 +112,9 @@ export function StepsButtons({
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          dataContext.setOrder(dataContext.order + 1);
+
+          console.log(dataContext.confirm);
+          // dataContext.setOrder(dataContext.order + 1);
         }}
       >
         {dataContext.order !== dataContext.numberSteps - 2

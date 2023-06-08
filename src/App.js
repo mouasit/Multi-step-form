@@ -18,6 +18,7 @@ import AddOns from "./Components/AddOns";
 import FinishingUp from "./Components/FinishingUp";
 import CardStep from "./Components/CardStep";
 import ThankYou from "./Components/ThankYou";
+import { ConfirmSelectPlan, ConfirmationPersonalInfo } from "./Helpers";
 
 function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
@@ -54,16 +55,16 @@ function App() {
         <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[30.8rem]">
           <StepsBody>
             <StepsItem>
-              <PersonalInfo />
+              <PersonalInfo confirm={ConfirmationPersonalInfo} />
             </StepsItem>
             <StepsItem>
-              <SelectPlan />
+              <SelectPlan confirm={ConfirmSelectPlan}/>
             </StepsItem>
             <StepsItem>
-              <AddOns />
+              <AddOns confirm={ConfirmSelectPlan}/>
             </StepsItem>
             <StepsItem>
-              <FinishingUp />
+              <FinishingUp confirm={ConfirmSelectPlan}/>
             </StepsItem>
             <StepsItem>
               <ThankYou />
