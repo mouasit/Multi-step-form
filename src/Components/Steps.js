@@ -21,12 +21,14 @@ export function Steps({ children, className }) {
 
 export function Step({ children, className, index }) {
   const dataContext = useContext(StepsContext);
+
+  let order = dataContext.order;
+
+  if (dataContext.order === dataContext.numberSteps - 1) order--;
   return (
     <li className="lg:w-full">
       <button
-        className={`${className} ${
-          dataContext.order === index ? "active" : ""
-        }`}
+        className={`${className} ${order === index ? "active" : ""}`}
         onClick={() => {
           dataContext.setOrder(index);
         }}
@@ -38,15 +40,14 @@ export function Step({ children, className, index }) {
 }
 
 export function ListSteps({ children, className }) {
-  const dataContext = useContext(StepsContext);
-  useEffect(() => {
-    dataContext.setNumberSteps(children.length);
-  }, [children.length, dataContext]);
   return <ul className={className}>{children}</ul>;
 }
 
 export function StepsBody({ children }) {
   const dataContext = useContext(StepsContext);
+  useEffect(() => {
+    dataContext.setNumberSteps(children.length);
+  }, [children.length, dataContext]);
   return <>{children[dataContext.order]}</>;
 }
 
@@ -63,7 +64,11 @@ export function StepsContainer({ children, className }) {
 }
 
 export function StepsControllers({ className, children }) {
-  return <div className={className}>{children}</div>;
+  const dataContext = useContext(StepsContext);
+
+  if (dataContext.order !== dataContext.numberSteps - 1)
+    return <div className={className}>{children}</div>;
+  else return null;
 }
 
 export function StepsButtons({
@@ -94,18 +99,17 @@ export function StepsButtons({
       ) : null}
       <button
         className={`${nextClassName} ${
-          dataContext.order === dataContext.numberSteps - 1
+          dataContext.order === dataContext.numberSteps - 2
             ? "bg-PurplishBlue"
             : "bg-MarineBlue"
         }`}
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          if (dataContext.order !== dataContext.numberSteps - 1)
-            dataContext.setOrder(dataContext.order + 1);
+          dataContext.setOrder(dataContext.order + 1);
         }}
       >
-        {dataContext.order !== dataContext.numberSteps - 1
+        {dataContext.order !== dataContext.numberSteps - 2
           ? nextContent
           : nameConfirmation}
       </button>

@@ -17,11 +17,12 @@ import SelectPlan from "./Components/SelectPlan";
 import AddOns from "./Components/AddOns";
 import FinishingUp from "./Components/FinishingUp";
 import CardStep from "./Components/CardStep";
+import ThankYou from "./Components/ThankYou";
 
 function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
   return (
-    <Steps className="lg:flex lg:w-[65rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
+    <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
       <div className="relative">
         <img
           src={BackgroundMobile}
@@ -49,7 +50,7 @@ function App() {
           </ListSteps>
         </StepsBar>
       </div>
-      <div className="absolute top-[8.3rem] flex w-full flex-1 justify-center lg:relative lg:top-0 lg:justify-center lg:pt-[2rem]">
+      <div className="absolute top-[8.3rem] flex w-full flex-1 justify-center lg:relative lg:top-0 lg:pt-[2rem]">
         <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[30.8rem]">
           <StepsBody>
             <StepsItem>
@@ -63,6 +64,9 @@ function App() {
             </StepsItem>
             <StepsItem>
               <FinishingUp />
+            </StepsItem>
+            <StepsItem>
+              <ThankYou />
             </StepsItem>
           </StepsBody>
           <StepsControllers className="fixed bottom-0 left-0 flex w-full justify-end bg-White p-5 lg:absolute lg:bottom-3 lg:justify-center lg:bg-opacity-0 lg:p-0">
