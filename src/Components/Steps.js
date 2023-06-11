@@ -84,6 +84,8 @@ export function StepsButtons({
   previousContent,
   previousClassName,
   nameConfirmation,
+  infoStep,
+  errorsStep
 }) {
   const dataContext = useContext(StepsContext);
   return (
@@ -112,8 +114,7 @@ export function StepsButtons({
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-
-          console.log(dataContext.confirm);
+          dataContext.confirm(infoStep,errorsStep);
           // dataContext.setOrder(dataContext.order + 1);
         }}
       >

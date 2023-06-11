@@ -19,9 +19,12 @@ import FinishingUp from "./Components/FinishingUp";
 import CardStep from "./Components/CardStep";
 import ThankYou from "./Components/ThankYou";
 import { ConfirmSelectPlan, ConfirmationPersonalInfo } from "./Helpers";
+import { useState } from "react";
 
 function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
+  const [infoStep, setInfoStep] = useState({});
+  const [errorsStep, setErrorsStep] = useState({});
   return (
     <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
       <div className="relative">
@@ -55,16 +58,20 @@ function App() {
         <StepsContainer className=" flex w-[94%] flex-col gap-8 lg:w-[30.8rem]">
           <StepsBody>
             <StepsItem>
-              <PersonalInfo confirm={ConfirmationPersonalInfo} />
+              <PersonalInfo
+                confirm={ConfirmationPersonalInfo}
+                setInfoStep={setInfoStep}
+                setErrorsStep={setErrorsStep}
+              />
             </StepsItem>
             <StepsItem>
-              <SelectPlan confirm={ConfirmSelectPlan}/>
+              <SelectPlan confirm={ConfirmSelectPlan} />
             </StepsItem>
             <StepsItem>
-              <AddOns confirm={ConfirmSelectPlan}/>
+              <AddOns confirm={ConfirmSelectPlan} />
             </StepsItem>
             <StepsItem>
-              <FinishingUp confirm={ConfirmSelectPlan}/>
+              <FinishingUp confirm={ConfirmSelectPlan} />
             </StepsItem>
             <StepsItem>
               <ThankYou />
@@ -78,6 +85,8 @@ function App() {
               previousContent="go back"
               previousClassName="font-medium capitalize text-CoolGray"
               nameConfirmation="confirm"
+              infoStep={infoStep}
+              errorsStep={errorsStep}
             ></StepsButtons>
           </StepsControllers>
         </StepsContainer>

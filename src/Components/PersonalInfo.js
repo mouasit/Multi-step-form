@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [errorName, setErrorName] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+
+  useEffect(() => {
+    let errors = {};
+    errors.setErrorName = setErrorName;
+    errors.setErrorEmail = setErrorEmail;
+    errors.setErrorPhone = setErrorPhone;
+    setErrorsStep(errors);
+  }, [setErrorsStep]);
+  useEffect(() => {
+    let data = {};
+    data.name = name;
+    data.email = email;
+    data.phone = phone;
+    setInfoStep(data);
+  }, [name, email, phone, setInfoStep]);
+
   return (
     <div className="flex flex-col gap-8 rounded-xl bg-White p-10 text-MarineBlue shadow-md lg:relative lg:gap-10 lg:rounded-none lg:bg-opacity-0 lg:p-0 lg:shadow-none">
       <div className="header-form">
@@ -16,6 +39,9 @@ export default function PersonalInfo() {
             type="text"
             placeholder="e.g. Stephen King"
             className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            onChange={(e) => {
+              setName(e.currentTarget.value);
+            }}
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -24,6 +50,9 @@ export default function PersonalInfo() {
             type="text"
             placeholder="e.g. stephenking@lorem.com"
             className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            onChange={(e) => {
+              setEmail(e.currentTarget.value);
+            }}
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -32,6 +61,9 @@ export default function PersonalInfo() {
             type="text"
             placeholder="e.g. +1 234 567 890"
             className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            onChange={(e) => {
+              setPhone(e.currentTarget.value);
+            }}
           />
         </div>
       </div>

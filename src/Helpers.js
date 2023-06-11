@@ -1,6 +1,6 @@
-export function ConfirmationPersonalInfo() {
-    console.log("personal info");
+export function ConfirmationPersonalInfo(infoSteps, errorSteps) {
+  console.log(infoSteps);
+  console.log(errorSteps);
 }
 
-export function ConfirmSelectPlan(){
-}
+export function ConfirmSelectPlan() {}
