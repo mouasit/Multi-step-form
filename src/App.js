@@ -25,7 +25,7 @@ function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
   const [infoStep, setInfoStep] = useState({});
   const [errorsStep, setErrorsStep] = useState({});
-  let data = [];
+  const [data, setData] = useState([]);
   return (
     <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
       <div className="relative">
@@ -63,10 +63,16 @@ function App() {
                 confirm={ConfirmationPersonalInfo}
                 setInfoStep={setInfoStep}
                 setErrorsStep={setErrorsStep}
+                info={data}
               />
             </StepsItem>
             <StepsItem>
-              <SelectPlan confirm={ConfirmSelectPlan} />
+              <SelectPlan
+                confirm={ConfirmSelectPlan}
+                setInfoStep={setInfoStep}
+                setErrorsStep={setErrorsStep}
+                info={data}
+              />
             </StepsItem>
             <StepsItem>
               <AddOns confirm={ConfirmSelectPlan} />
@@ -89,6 +95,7 @@ function App() {
               infoStep={infoStep}
               errorsStep={errorsStep}
               data={data}
+              setData={setData}
             ></StepsButtons>
           </StepsControllers>
         </StepsContainer>

@@ -30,4 +30,6 @@ export function ConfirmationPersonalInfo(infoSteps, errorSteps) {
   return error;
 }
 
-export function ConfirmSelectPlan() {}
+export function ConfirmSelectPlan(infoStep, errorsStep) {
+  return false;
+}

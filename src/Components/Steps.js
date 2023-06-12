@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 
-const StepsContext = createContext();
+export const StepsContext = createContext();
 
 export function Steps({ children, className }) {
   const [order, setOrder] = useState(0);
@@ -89,8 +89,10 @@ export function StepsButtons({
   infoStep,
   errorsStep,
   data,
+  setData,
 }) {
   const dataContext = useContext(StepsContext);
+  let fillData = data;
   return (
     <div
       className={`${className} ${
@@ -117,12 +119,13 @@ export function StepsButtons({
         type="submit"
         onClick={async (e) => {
           e.preventDefault();
+
           if (!dataContext.confirm(infoStep, errorsStep)) {
-            if (data[dataContext.order])
-              data[dataContext.order] = await infoStep;
-            else await data.push(infoStep);
+            if (fillData[dataContext.order]) {
+              fillData[dataContext.order] = await infoStep;
+            } else fillData.push(infoStep);
+            setData(fillData);
             dataContext.setOrder(dataContext.order + 1);
-            console.log(data);
           }
         }}
       >

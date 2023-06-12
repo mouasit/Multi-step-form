@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { StepsContext } from "./Steps";
 
-export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+export default function PersonalInfo({ setInfoStep, setErrorsStep, info }) {
+  const dataContext = useContext(StepsContext);
+  
+  const [name, setName] = useState(info[dataContext.order]?.name || "");
+  const [email, setEmail] = useState(info[dataContext.order]?.email || "");
+  const [phone, setPhone] = useState(info[dataContext.order]?.phone || "");
 
   const [errorName, setErrorName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -42,6 +45,7 @@ export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
           </div>
           <input
             type="text"
+            value={name}
             placeholder="e.g. Stephen King"
             className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
               errorName.length ? "border-StrawberryRed" : ""
@@ -62,6 +66,7 @@ export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
+            value={email}
             className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
               errorEmail.length ? "border-StrawberryRed" : ""
             }`}
@@ -81,6 +86,7 @@ export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
+            value={phone}
             className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
               errorPhone.length ? "border-StrawberryRed" : ""
             }`}

@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CardPlan from "./CardPlan";
 import { IconArcade, IconAdvanced, IconPro } from "./Icons";
+import { StepsContext } from "./Steps";
 
-export default function SelectPlan() {
-  const [active, setActive] = useState(0);
-  const [typePlan, setTypePlan] = useState("monthly");
+export default function SelectPlan({ setInfoStep, setErrorsStep, info }) {
+  const dataContext = useContext(StepsContext);
+  const [active, setActive] = useState(info[dataContext.order]?.active || 0);
+  const [plan, setPlan] = useState(info[dataContext.order]?.plan || "arcade");
+  const [price, setPrice] = useState(
+    info[dataContext.order]?.price || "$12/mo"
+  );
+  const [typePlan, setTypePlan] = useState(
+    info[dataContext.order]?.typePlan || "monthly"
+  );
   const plans = [
     {
       icon: <IconArcade />,
@@ -28,6 +36,18 @@ export default function SelectPlan() {
       offerYearly: "2 months free",
     },
   ];
+
+  useEffect(() => {
+    setErrorsStep({});
+  }, [setErrorsStep]);
+  useEffect(() => {
+    let data = {};
+    data.plan = plan;
+    data.typePlan = typePlan;
+    data.price = price;
+    data.active = active;
+    setInfoStep(data);
+  }, [plan, setInfoStep, typePlan, price, active]);
   return (
     <div className="flex flex-col gap-8 rounded-xl bg-White p-10 text-MarineBlue shadow-md lg:relative lg:gap-10 lg:rounded-none lg:bg-opacity-0 lg:p-0 lg:shadow-none">
       <div className="header-form">
@@ -47,8 +67,10 @@ export default function SelectPlan() {
                 key={index}
                 index={index}
                 active={active}
+                setPlan={setPlan}
                 setActive={setActive}
                 offer={typePlan === "yearly" ? e.offerYearly : false}
+                setPrice={setPrice}
               />
             );
           })}
