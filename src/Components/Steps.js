@@ -22,7 +22,7 @@ export function Steps({ children, className }) {
   );
 }
 
-export function Step({ children, className, index }) {
+export function Step({ children, className, index, data }) {
   const dataContext = useContext(StepsContext);
 
   let order = dataContext.order;
@@ -34,6 +34,7 @@ export function Step({ children, className, index }) {
         onClick={() => {
           dataContext.setOrder(index);
         }}
+        {...(order !== index || !data[index] ? { disabled: true } : {})}
       >
         {children}
       </button>

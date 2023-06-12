@@ -26,6 +26,7 @@ function App() {
   const [infoStep, setInfoStep] = useState({});
   const [errorsStep, setErrorsStep] = useState({});
   const [data, setData] = useState([]);
+
   return (
     <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
       <div className="relative">
@@ -47,6 +48,7 @@ function App() {
                   className="rounded-full lg:flex lg:w-full lg:items-center lg:gap-4 lg:rounded-none lg:pl-7"
                   key={index}
                   index={index}
+                  data={data}
                 >
                   <CardStep numberStep={index + 1} nameStep={e} />
                 </Step>
