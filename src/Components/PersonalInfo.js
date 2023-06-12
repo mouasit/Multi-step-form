@@ -34,34 +34,58 @@ export default function PersonalInfo({ setInfoStep, setErrorsStep }) {
       </div>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1">
-          <label>Name</label>
+          <div className="flex justify-between">
+            <label>Name</label>
+            {errorName.length ? (
+              <span className="font-bold text-StrawberryRed">{errorName}</span>
+            ) : null}
+          </div>
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
+              errorName.length ? "border-StrawberryRed" : ""
+            }`}
             onChange={(e) => {
+              setErrorName("");
               setName(e.currentTarget.value);
             }}
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label>Email Address</label>
+          <div className="flex justify-between">
+            <label>Email Address</label>
+            {errorEmail.length ? (
+              <span className="font-bold text-StrawberryRed">{errorEmail}</span>
+            ) : null}
+          </div>
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
-            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
+              errorEmail.length ? "border-StrawberryRed" : ""
+            }`}
             onChange={(e) => {
+              setErrorEmail("");
               setEmail(e.currentTarget.value);
             }}
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label>Phone Number</label>
+          <div className="flex justify-between">
+            <label>Phone Number</label>
+            {errorPhone.length ? (
+              <span className="font-bold text-StrawberryRed">{errorPhone}</span>
+            ) : null}
+          </div>
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            className="rounded-md border-[1px] border-LightGray  p-4 outline-none  lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium"
+            className={`rounded-md border-[1px] border-LightGray  p-4 outline-none  focus:border-MarineBlue lg:p-[0.7rem] lg:pl-[.9rem] lg:placeholder:font-medium ${
+              errorPhone.length ? "border-StrawberryRed" : ""
+            }`}
             onChange={(e) => {
+              setErrorPhone("");
               setPhone(e.currentTarget.value);
             }}
           />

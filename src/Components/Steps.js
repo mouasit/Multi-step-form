@@ -47,9 +47,11 @@ export function ListSteps({ children, className }) {
 
 export function StepsBody({ children }) {
   const dataContext = useContext(StepsContext);
+
   useEffect(() => {
     dataContext.setNumberSteps(children.length);
   }, [children.length, dataContext]);
+
   return <>{children[dataContext.order]}</>;
 }
 
@@ -85,7 +87,8 @@ export function StepsButtons({
   previousClassName,
   nameConfirmation,
   infoStep,
-  errorsStep
+  errorsStep,
+  data,
 }) {
   const dataContext = useContext(StepsContext);
   return (
@@ -110,12 +113,17 @@ export function StepsButtons({
           dataContext.order === dataContext.numberSteps - 2
             ? "bg-PurplishBlue"
             : "bg-MarineBlue"
-        }`}
+        } hover:bg-opacity-[.9]`}
         type="submit"
-        onClick={(e) => {
+        onClick={async (e) => {
           e.preventDefault();
-          dataContext.confirm(infoStep,errorsStep);
-          // dataContext.setOrder(dataContext.order + 1);
+          if (!dataContext.confirm(infoStep, errorsStep)) {
+            if (data[dataContext.order])
+              data[dataContext.order] = await infoStep;
+            else await data.push(infoStep);
+            dataContext.setOrder(dataContext.order + 1);
+            console.log(data);
+          }
         }}
       >
         {dataContext.order !== dataContext.numberSteps - 2

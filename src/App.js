@@ -18,13 +18,14 @@ import AddOns from "./Components/AddOns";
 import FinishingUp from "./Components/FinishingUp";
 import CardStep from "./Components/CardStep";
 import ThankYou from "./Components/ThankYou";
-import { ConfirmSelectPlan, ConfirmationPersonalInfo } from "./Helpers";
+import { ConfirmSelectPlan, ConfirmationPersonalInfo } from "./helpers";
 import { useState } from "react";
 
 function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
   const [infoStep, setInfoStep] = useState({});
   const [errorsStep, setErrorsStep] = useState({});
+  let data = [];
   return (
     <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
       <div className="relative">
@@ -87,6 +88,7 @@ function App() {
               nameConfirmation="confirm"
               infoStep={infoStep}
               errorsStep={errorsStep}
+              data={data}
             ></StepsButtons>
           </StepsControllers>
         </StepsContainer>
