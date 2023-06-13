@@ -2,16 +2,12 @@ import React, { useEffect, useState, useContext } from "react";
 import CardCheck from "./CardCheck";
 import { StepsContext } from "./Steps";
 
-export default function AddOns({ setInfoStep, setErrorsStep, info }) {
+export default function AddOns({ setInfoStep, info }) {
   const dataContext = useContext(StepsContext);
 
   const [online, setOnline] = useState(info[dataContext.order]?.online);
   const [storage, setStorage] = useState(info[dataContext.order]?.storage);
   const [profile, setProfile] = useState(info[dataContext.order]?.profile);
-
-  useEffect(() => {
-    setErrorsStep({});
-  }, [setErrorsStep]);
 
   useEffect(() => {
     let data = {};

@@ -3,7 +3,7 @@ import CardPlan from "./CardPlan";
 import { IconArcade, IconAdvanced, IconPro } from "./Icons";
 import { StepsContext } from "./Steps";
 
-export default function SelectPlan({ setInfoStep, setErrorsStep, info }) {
+export default function SelectPlan({ setInfoStep, info }) {
   const dataContext = useContext(StepsContext);
   const [active, setActive] = useState(info[dataContext.order]?.active || 0);
   const [plan, setPlan] = useState(info[dataContext.order]?.plan || "arcade");
@@ -37,9 +37,6 @@ export default function SelectPlan({ setInfoStep, setErrorsStep, info }) {
     },
   ];
 
-  useEffect(() => {
-    setErrorsStep({});
-  }, [setErrorsStep]);
   useEffect(() => {
     let data = {};
     data.plan = plan;

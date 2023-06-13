@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
+import { fillDataInfo } from "../helpers";
 
 export const StepsContext = createContext();
 
@@ -125,22 +126,36 @@ export function StepsButtons({
         type="submit"
         onClick={async (e) => {
           e.preventDefault();
-          if (!dataContext.confirm(infoStep, errorsStep)) {
-            if (fillData[dataContext.order]) {
-              fillData[dataContext.order] = await infoStep;
-              dataContext.setCurrentStep(dataContext.currentStepTemp);
+          if (dataContext.confirm) {
+            if (!dataContext.confirm(infoStep, errorsStep)) {
+              fillDataInfo(
+                fillData,
+                infoStep,
+                setData,
+                dataContext.order,
+                dataContext.setOrder,
+                dataContext.currentStep,
+                dataContext.setCurrentStep,
+                dataContext.currentStepTemp,
+                dataContext.setCurrentStepTemp
+              );
             } else {
-              fillData.push(infoStep);
-              dataContext.setCurrentStepTemp(dataContext.currentStep + 1);
-              dataContext.setCurrentStep(dataContext.currentStep + 1);
+              dataContext.setCurrentStepTemp(dataContext.currentStep);
+              dataContext.setCurrentStep(dataContext.order);
+              console.log(fillData);
             }
-            setData(fillData);
-            dataContext.setOrder(dataContext.order + 1);
-            console.log(fillData);
           } else {
-            dataContext.setCurrentStepTemp(dataContext.currentStep);
-            dataContext.setCurrentStep(dataContext.order);
-            console.log(fillData);
+            fillDataInfo(
+              fillData,
+              infoStep,
+              setData,
+              dataContext.order,
+              dataContext.setOrder,
+              dataContext.currentStep,
+              dataContext.setCurrentStep,
+              dataContext.currentStepTemp,
+              dataContext.setCurrentStepTemp
+            );
           }
         }}
       >

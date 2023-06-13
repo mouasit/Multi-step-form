@@ -30,10 +30,26 @@ export function ConfirmationPersonalInfo(infoSteps, errorSteps) {
   return error;
 }
 
-export function ConfirmSelectPlan(infoStep, errorsStep) {
-  return false;
-}
-
-export function ConfirmAddOns(infoStep, errorsStep) {
-  return false;
+export async function fillDataInfo(
+  objectData,
+  data,
+  setData,
+  order,
+  setOrder,
+  currentStep,
+  setCurrentStep,
+  currentStepTemp,
+  setCurrentStepTemp
+) {
+  if (objectData[order]) {
+    objectData[order] = await data;
+    setCurrentStep(currentStepTemp);
+  } else {
+    objectData.push(data);
+    setCurrentStepTemp(currentStep + 1);
+    setCurrentStep(currentStep + 1);
+  }
+  setData(objectData);
+  setOrder(order + 1);
+  console.log(objectData);
 }

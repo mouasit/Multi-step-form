@@ -18,11 +18,7 @@ import AddOns from "./Components/AddOns";
 import FinishingUp from "./Components/FinishingUp";
 import CardStep from "./Components/CardStep";
 import ThankYou from "./Components/ThankYou";
-import {
-  ConfirmAddOns,
-  ConfirmSelectPlan,
-  ConfirmationPersonalInfo,
-} from "./helpers";
+import { ConfirmationPersonalInfo } from "./helpers";
 import { useState } from "react";
 
 function App() {
@@ -73,23 +69,13 @@ function App() {
               />
             </StepsItem>
             <StepsItem>
-              <SelectPlan
-                confirm={ConfirmSelectPlan}
-                setInfoStep={setInfoStep}
-                setErrorsStep={setErrorsStep}
-                info={data}
-              />
+              <SelectPlan setInfoStep={setInfoStep} info={data} />
             </StepsItem>
             <StepsItem>
-              <AddOns
-                confirm={ConfirmAddOns}
-                setInfoStep={setInfoStep}
-                setErrorsStep={setErrorsStep}
-                info={data}
-              />
+              <AddOns setInfoStep={setInfoStep} info={data} />
             </StepsItem>
             <StepsItem>
-              <FinishingUp confirm={ConfirmSelectPlan} />
+              <FinishingUp />
             </StepsItem>
             <StepsItem>
               <ThankYou />
