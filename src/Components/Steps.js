@@ -5,6 +5,8 @@ export const StepsContext = createContext();
 export function Steps({ children, className }) {
   const [order, setOrder] = useState(0);
   const [numberSteps, setNumberSteps] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStepTemp, setCurrentStepTemp] = useState(0);
   const [confirm, setConfirm] = useState(null);
   return (
     <StepsContext.Provider
@@ -15,6 +17,10 @@ export function Steps({ children, className }) {
         setNumberSteps: setNumberSteps,
         confirm: confirm,
         setConfirm: setConfirm,
+        currentStep: currentStep,
+        setCurrentStep: setCurrentStep,
+        currentStepTemp: currentStepTemp,
+        setCurrentStepTemp: setCurrentStepTemp,
       }}
     >
       <main className={className}>{children}</main>
@@ -24,7 +30,6 @@ export function Steps({ children, className }) {
 
 export function Step({ children, className, index, data }) {
   const dataContext = useContext(StepsContext);
-
   let order = dataContext.order;
   if (dataContext.order === dataContext.numberSteps - 1) order--;
   return (
@@ -34,7 +39,7 @@ export function Step({ children, className, index, data }) {
         onClick={() => {
           dataContext.setOrder(index);
         }}
-        {...(order !== index || !data[index] ? { disabled: true } : {})}
+        {...(dataContext.currentStep >= index ? {} : { disabled: true })}
       >
         {children}
       </button>
@@ -120,13 +125,20 @@ export function StepsButtons({
         type="submit"
         onClick={async (e) => {
           e.preventDefault();
-
           if (!dataContext.confirm(infoStep, errorsStep)) {
             if (fillData[dataContext.order]) {
               fillData[dataContext.order] = await infoStep;
-            } else fillData.push(infoStep);
+              dataContext.setCurrentStep(dataContext.currentStepTemp);
+            } else {
+              fillData.push(infoStep);
+              dataContext.setCurrentStepTemp(dataContext.currentStep + 1);
+              dataContext.setCurrentStep(dataContext.currentStep + 1);
+            }
             setData(fillData);
             dataContext.setOrder(dataContext.order + 1);
+          } else {
+            dataContext.setCurrentStepTemp(dataContext.currentStep);
+            dataContext.setCurrentStep(dataContext.order);
           }
         }}
       >
