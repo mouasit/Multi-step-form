@@ -136,9 +136,11 @@ export function StepsButtons({
             }
             setData(fillData);
             dataContext.setOrder(dataContext.order + 1);
+            console.log(fillData);
           } else {
             dataContext.setCurrentStepTemp(dataContext.currentStep);
             dataContext.setCurrentStep(dataContext.order);
+            console.log(fillData);
           }
         }}
       >

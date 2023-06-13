@@ -33,3 +33,7 @@ export function ConfirmationPersonalInfo(infoSteps, errorSteps) {
 export function ConfirmSelectPlan(infoStep, errorsStep) {
   return false;
 }
+
+export function ConfirmAddOns(infoStep, errorsStep) {
+  return false;
+}

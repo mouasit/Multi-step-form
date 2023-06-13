@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IconCheckMark } from "./Icons";
 
-export default function CardCheck({ title, service, price, active }) {
+export default function CardCheck({
+  title,
+  service,
+  price,
+  defaultActive,
+  setState,
+}) {
+  const [active, setActive] = useState(defaultActive || false);
+
+  useEffect(() => {
+    if (active) {
+      let data = {};
+      data.title = title;
+      data.price = price;
+      setState(data);
+    } else setState(false);
+  }, [active, setState, price, title]);
+
   return (
     <button
       type="button"
-      className={`flex w-full items-center justify-between rounded-lg border-[1px] p-4 ${
+      className={`flex w-full items-center justify-between rounded-lg border-[1px] p-4 hover:border-MarineBlue ${
         active ? "border-MarineBlue bg-Alabaster" : "border-LightGray"
       }`}
+      onClick={() => {
+        if (active) {
+          setActive(false);
+        } else {
+          setActive(true);
+        }
+      }}
     >
       <div className="flex items-center gap-4">
         <div
