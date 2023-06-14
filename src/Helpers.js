@@ -24,7 +24,10 @@ export function ConfirmationPersonalInfo(infoSteps, errorSteps) {
     errorSteps.setErrorPhone("This field is required");
   } else if (!/^[0-9]+$/.test(infoSteps.phone)) {
     error = true;
-    errorSteps.setErrorPhone("Only Digit");
+    errorSteps.setErrorPhone("Only numbers");
+  } else if (infoSteps.phone.length < 10) {
+    error = true;
+    errorSteps.setErrorPhone("Minimum 10 numbers");
   }
 
   return error;

@@ -5,7 +5,7 @@ import { IconArcade, IconAdvanced, IconPro } from "./Icons";
 export default function SelectPlan({ setInfoStep, info }) {
   const [active, setActive] = useState(info.selectPlan?.active || 0);
   const [plan, setPlan] = useState(info.selectPlan?.plan || "arcade");
-  const [price, setPrice] = useState(info.selectPlan?.price || "$12/mo");
+  const [price, setPrice] = useState(info.selectPlan?.price || "9");
   const [typePlan, setTypePlan] = useState(
     info.selectPlan?.typePlan || "monthly"
   );
@@ -82,9 +82,13 @@ export default function SelectPlan({ setInfoStep, info }) {
             type="button"
             className="h-[1.5rem] w-[3rem] rounded-full bg-MarineBlue px-1"
             onClick={() => {
-              typePlan === "monthly"
-                ? setTypePlan("yearly")
-                : setTypePlan("monthly");
+              if (typePlan === "monthly") {
+                setTypePlan("yearly");
+                setPrice(price * 10)
+              } else {
+                setTypePlan("monthly");
+                setPrice(price / 10)
+              }
             }}
           >
             <div
