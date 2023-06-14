@@ -87,7 +87,7 @@ function App() {
               nextContent="next step"
               nextClassName="w-[7.5rem] rounded-md p-3 text-White capitalize"
               previousContent="go back"
-              previousClassName="font-medium capitalize text-CoolGray"
+              previousClassName="font-medium capitalize text-CoolGray hover:text-MarineBlue"
               nameConfirmation="confirm"
               infoStep={infoStep}
               errorsStep={errorsStep}
