@@ -30,7 +30,7 @@ export default function AddOns({ setInfoStep, info }) {
         <CardCheck
           title="Online service"
           service="Access to multiplayer games"
-          price={info[1]?.typePlan === "yearly" ? "+$10/yr" : "+$1/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "+$10/yr" : "+$1/mo"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? true : online
           }
@@ -39,7 +39,7 @@ export default function AddOns({ setInfoStep, info }) {
         <CardCheck
           title="Larger storage"
           service="Extra 1TB of cloud save"
-          price={info[1]?.typePlan === "yearly" ? "+$20/yr" : "+$2/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "+$20/yr" : "+$2/mo"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? true : storage
           }
@@ -48,7 +48,7 @@ export default function AddOns({ setInfoStep, info }) {
         <CardCheck
           title="Customizable profile"
           service="Custom theme on your profile"
-          price={info[1]?.typePlan === "yearly" ? "+$20/yr" : "+$20/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "+$20/yr" : "+$20/mo"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? false : profile
           }
