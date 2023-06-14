@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardCheckout from "./CardCheckout";
+import { StepsContext } from "./Steps";
+import { getTotal } from "../helpers";
 
 export default function FinishingUp({ info }) {
+  const dataContext = useContext(StepsContext);
   return (
     <div className="flex flex-col gap-8 rounded-xl bg-White p-10 text-MarineBlue shadow-md lg:relative lg:gap-10 lg:rounded-none lg:bg-opacity-0 lg:p-0 lg:shadow-none">
       <div className="header-form">
@@ -17,11 +20,20 @@ export default function FinishingUp({ info }) {
               <span className="font-bold capitalize">
                 {info.selectPlan?.plan} ({info.selectPlan?.typePlan})
               </span>
-              <button className="text-sm capitalize text-CoolGray underline hover:text-PurplishBlue">
+              <button
+                type="button"
+                className="text-sm capitalize text-CoolGray underline hover:text-PurplishBlue"
+                onClick={() => {
+                  dataContext.setOrder(1);
+                }}
+              >
                 change
               </button>
             </div>
-            <span className="font-bold">{info.selectPlan?.price}</span>
+            <span className="text-lg font-bold">
+              ${info.selectPlan?.price}/
+              {info.selectPlan?.typePlan === "monthly" ? "mo" : "yr"}
+            </span>
           </div>
           {Object.keys(info.addOns).length > 1 ? (
             <>
@@ -30,26 +42,35 @@ export default function FinishingUp({ info }) {
                 <CardCheckout
                   service={info.addOns.online.title}
                   price={info.addOns.online.price}
+                  typePlan={info.selectPlan.typePlan}
                 />
               ) : null}
               {info.addOns?.storage ? (
                 <CardCheckout
                   service={info.addOns.storage.title}
                   price={info.addOns.storage.price}
+                  typePlan={info.selectPlan.typePlan}
                 />
               ) : null}
               {info.addOns?.profile ? (
                 <CardCheckout
                   service={info.addOns.profile.title}
                   price={info.addOns.profile.price}
+                  typePlan={info.selectPlan.typePlan}
                 />
               ) : null}
             </>
           ) : null}
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-sm text-CoolGray">Total (per month)</span>
-          <span className="font-bold text-PurplishBlue">+$12/mo</span>
+          <span className="text-sm text-CoolGray">
+            Total (per{" "}
+            {info.selectPlan.typePlan === "monthly" ? "month" : "year"})
+          </span>
+          <span className="text-xl font-bold text-PurplishBlue">
+            {info.selectPlan.typePlan === "monthly" ? "+" : ""}${getTotal(info)}
+            /{info.selectPlan.typePlan === "monthly" ? "mo" : "yr"}
+          </span>
         </div>
       </div>
     </div>

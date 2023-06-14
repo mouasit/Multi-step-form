@@ -13,22 +13,22 @@ export default function SelectPlan({ setInfoStep, info }) {
     {
       icon: <IconArcade />,
       type: "arcade",
-      priceMonthly: "$9/mo",
-      priceYearly: "$90/yr",
+      priceMonthly: "9",
+      priceYearly: "90",
       offerYearly: "2 months free",
     },
     {
       icon: <IconAdvanced />,
       type: "advanced",
-      priceMonthly: "$12/mo",
-      priceYearly: "$120/yr",
+      priceMonthly: "12",
+      priceYearly: "120",
       offerYearly: "2 months free",
     },
     {
       icon: <IconPro />,
       type: "pro",
-      priceMonthly: "$15/mo",
-      priceYearly: "$150/yr",
+      priceMonthly: "15",
+      priceYearly: "150",
       offerYearly: "2 months free",
     },
   ];
@@ -61,6 +61,7 @@ export default function SelectPlan({ setInfoStep, info }) {
                 key={index}
                 index={index}
                 active={active}
+                typePlan={typePlan}
                 setPlan={setPlan}
                 setActive={setActive}
                 offer={typePlan === "yearly" ? e.offerYearly : false}

@@ -7,6 +7,7 @@ export default function CardCheck({
   price,
   defaultActive,
   setState,
+  typePlan,
 }) {
   const [active, setActive] = useState(defaultActive || false);
 
@@ -48,7 +49,7 @@ export default function CardCheck({
           <span className="text-sm text-CoolGray">{service}</span>
         </div>
       </div>
-      <span className="text-PurplishBlue">{price}</span>
+      <span className="text-PurplishBlue">+${price}/{typePlan==="monthly"?"mo":"yr"}</span>
     </button>
   );
 }

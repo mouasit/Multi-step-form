@@ -8,6 +8,7 @@ export default function CardPlan({
   active,
   setActive,
   offer,
+  typePlan,
   setPlan,
   setPrice,
 }) {
@@ -26,7 +27,7 @@ export default function CardPlan({
       {icon}
       <span className="flex flex-col items-start lg:gap-1">
         <span className=" text-[1.1rem] font-bold capitalize">{type}</span>
-        <span className="text-CoolGray">{price}</span>
+        <span className="text-CoolGray">${price}/{typePlan === "monthly"?"mo":"yr"}</span>
         {offer ? <span className="text-MarineBlue">{offer}</span> : null}
       </span>
     </button>

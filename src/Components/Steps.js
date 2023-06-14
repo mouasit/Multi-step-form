@@ -40,7 +40,10 @@ export function Step({ children, className, index, data }) {
         onClick={() => {
           dataContext.setOrder(index);
         }}
-        {...(dataContext.order !== dataContext.numberSteps - 1 && dataContext.currentStep >= index ? {} : { disabled: true })}
+        {...(dataContext.order !== dataContext.numberSteps - 1 &&
+        dataContext.currentStep >= index
+          ? {}
+          : { disabled: true })}
       >
         {children}
       </button>
@@ -161,7 +164,7 @@ export function StepsButtons({
             }
           } else {
             dataContext.setOrder(dataContext.order + 1);
-            console.log("Thank you.");
+            // Get data in fillData variable
           }
         }}
       >

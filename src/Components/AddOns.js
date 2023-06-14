@@ -30,29 +30,32 @@ export default function AddOns({ setInfoStep, info }) {
         <CardCheck
           title="Online service"
           service="Access to multiplayer games"
-          price={info.selectPlan?.typePlan === "yearly" ? "+$10/yr" : "+$1/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "10" : "1"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? true : online
           }
           setState={setOnline}
+          typePlan={info.selectPlan?.typePlan}
         />
         <CardCheck
           title="Larger storage"
           service="Extra 1TB of cloud save"
-          price={info.selectPlan?.typePlan === "yearly" ? "+$20/yr" : "+$2/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "20" : "2"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? true : storage
           }
           setState={setStorage}
+          typePlan={info.selectPlan?.typePlan}
         />
         <CardCheck
           title="Customizable profile"
           service="Custom theme on your profile"
-          price={info.selectPlan?.typePlan === "yearly" ? "+$20/yr" : "+$20/mo"}
+          price={info.selectPlan?.typePlan === "yearly" ? "20" : "2"}
           defaultActive={
             dataContext.order === dataContext.currentStep ? false : profile
           }
           setState={setProfile}
+          typePlan={info.selectPlan?.typePlan}
         />
       </div>
     </div>

@@ -53,3 +53,18 @@ export async function fillDataInfo(
   setData(objectData);
   setOrder(order + 1);
 }
+
+export function getTotal(data) {
+  const pricePlan = Number(data.selectPlan.price);
+  const priceTotalServices = getTotalServices(data.addOns);
+
+  return pricePlan + priceTotalServices;
+}
+
+function getTotalServices(services) {
+  const online = Number(services.online?.price) || 0;
+  const storage = Number(services.storage?.price) || 0;
+  const profile = Number(services.profile?.price) || 0;
+
+  return online + storage + profile;
+}
