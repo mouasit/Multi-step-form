@@ -2,6 +2,7 @@ import React from "react";
 import CardCheckout from "./CardCheckout";
 
 export default function FinishingUp({ info }) {
+  console.log(info);
   return (
     <div className="flex flex-col gap-8 rounded-xl bg-White p-10 text-MarineBlue shadow-md lg:relative lg:gap-10 lg:rounded-none lg:bg-opacity-0 lg:p-0 lg:shadow-none">
       <div className="header-form">

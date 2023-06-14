@@ -1,17 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import CardPlan from "./CardPlan";
 import { IconArcade, IconAdvanced, IconPro } from "./Icons";
-import { StepsContext } from "./Steps";
 
 export default function SelectPlan({ setInfoStep, info }) {
-  const dataContext = useContext(StepsContext);
-  const [active, setActive] = useState(info[dataContext.order]?.active || 0);
-  const [plan, setPlan] = useState(info[dataContext.order]?.plan || "arcade");
-  const [price, setPrice] = useState(
-    info[dataContext.order]?.price || "$12/mo"
-  );
+  const [active, setActive] = useState(info.selectPlan?.active || 0);
+  const [plan, setPlan] = useState(info.selectPlan?.plan || "arcade");
+  const [price, setPrice] = useState(info.selectPlan?.price || "$12/mo");
   const [typePlan, setTypePlan] = useState(
-    info[dataContext.order]?.typePlan || "monthly"
+    info.selectPlan?.typePlan || "monthly"
   );
   const plans = [
     {
@@ -39,6 +35,7 @@ export default function SelectPlan({ setInfoStep, info }) {
 
   useEffect(() => {
     let data = {};
+    data.stepName = "selectPlan";
     data.plan = plan;
     data.typePlan = typePlan;
     data.price = price;

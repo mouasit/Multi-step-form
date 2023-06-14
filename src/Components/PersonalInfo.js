@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
-import { StepsContext } from "./Steps";
+import React, { useEffect, useState } from "react";
 
 export default function PersonalInfo({ setInfoStep, setErrorsStep, info }) {
-  const dataContext = useContext(StepsContext);
-  
-  const [name, setName] = useState(info[dataContext.order]?.name || "");
-  const [email, setEmail] = useState(info[dataContext.order]?.email || "");
-  const [phone, setPhone] = useState(info[dataContext.order]?.phone || "");
+
+  const [name, setName] = useState(info.personalInfo?.name || "");
+  const [email, setEmail] = useState(info.personalInfo?.email || "");
+  const [phone, setPhone] = useState(info.personalInfo?.phone || "");
 
   const [errorName, setErrorName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -21,6 +19,7 @@ export default function PersonalInfo({ setInfoStep, setErrorsStep, info }) {
   }, [setErrorsStep]);
   useEffect(() => {
     let data = {};
+    data.stepName = "personalInfo";
     data.name = name;
     data.email = email;
     data.phone = phone;

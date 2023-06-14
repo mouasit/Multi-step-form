@@ -5,12 +5,13 @@ import { StepsContext } from "./Steps";
 export default function AddOns({ setInfoStep, info }) {
   const dataContext = useContext(StepsContext);
 
-  const [online, setOnline] = useState(info[dataContext.order]?.online);
-  const [storage, setStorage] = useState(info[dataContext.order]?.storage);
-  const [profile, setProfile] = useState(info[dataContext.order]?.profile);
+  const [online, setOnline] = useState(info.addOns?.online);
+  const [storage, setStorage] = useState(info.addOns?.storage);
+  const [profile, setProfile] = useState(info.addOns?.profile);
 
   useEffect(() => {
     let data = {};
+    data.stepName = "addOns";
     if (online) data.online = online;
     if (storage) data.storage = storage;
     if (profile) data.profile = profile;

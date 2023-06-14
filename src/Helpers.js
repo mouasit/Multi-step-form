@@ -41,11 +41,12 @@ export async function fillDataInfo(
   currentStepTemp,
   setCurrentStepTemp
 ) {
-  if (objectData[order]) {
-    objectData[order] = await data;
+  const stepName = data.stepName;
+  if (objectData.stepName) {
+    objectData.stepName = await data;
     setCurrentStep(currentStepTemp);
   } else {
-    objectData.push(data);
+    objectData[stepName] = data;
     setCurrentStepTemp(currentStep + 1);
     setCurrentStep(currentStep + 1);
   }

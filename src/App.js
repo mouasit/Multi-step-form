@@ -25,7 +25,7 @@ function App() {
   const listSteps = ["your info", "select plan", "add-ons", "summary"];
   const [infoStep, setInfoStep] = useState({});
   const [errorsStep, setErrorsStep] = useState({});
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   return (
     <Steps className="lg:flex lg:w-[63rem] lg:rounded-xl lg:bg-White lg:p-4 lg:shadow-md">
