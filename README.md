@@ -1,28 +1,30 @@
-# E-commerce product page
+# Multi-step form
 
 ![Design preview for the Notifications page](./src/assets/desktop-preview.jpg)
 
 ## Welcome! 👋
 
-The E-commerce Product Page is a responsive web application that allows users to view and purchase products online. The application features an optimal layout that adjusts to the user's device screen size. Users can interact with the product page by hovering over interactive elements and opening a lightbox gallery by clicking on the large product image. The page also allows users to switch the large product image by clicking on the small thumbnail images. Users can add items to the cart and view the cart, as well as remove items from it.
+The Multi-Step Form project enhances data collection with a user-friendly interface. Users can complete each step, go back for updates, and confirm their order with a final summary. The form adapts to different screen sizes, offers interactive elements, and provides comprehensive validation for missed fields, incorrect email format, and unselected options. Simplify tasks and collect accurate data with the Multi-Step Form. Discover the full range of features by visiting the link below.
 
 ## Features
 
-- View the optimal layout for the site depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Open a lightbox gallery by clicking on the large product image
-- Switch the large product image by clicking on the small thumbnail images
-- Add items to the cart
-- View the cart and remove items from it
+- Complete each step of the sequence
+- Go back to a previous step to update their selections
+- See a summary of their selections on the final step and confirm their order
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- Receive form validation messages if:
+  - A field has been missed
+  - The email address is not formatted correctly
+  - A step is submitted, but no selection has been made
 
 ## Tools Used
 
-The E-commerce Product Page application includes the following features:
+The Multi-step form application includes the following tools:
 
 - React js
 - Tailwind css
-- Chakra ui
 
 ## Getting Started
 
-To use the E-commerce Product Page, simply navigate to the URL where it is hosted: https://mouasit.github.io/E-commerce-product-page
+To use the Multi-step form, simply navigate to the URL where it is hosted: https://mouasit.github.io/Multi-step-form
