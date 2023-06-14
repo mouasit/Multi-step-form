@@ -40,7 +40,7 @@ export function Step({ children, className, index, data }) {
         onClick={() => {
           dataContext.setOrder(index);
         }}
-        {...(dataContext.currentStep >= index ? {} : { disabled: true })}
+        {...(dataContext.order !== dataContext.numberSteps - 1 && dataContext.currentStep >= index ? {} : { disabled: true })}
       >
         {children}
       </button>
@@ -95,6 +95,7 @@ export function StepsButtons({
   nameConfirmation,
   infoStep,
   errorsStep,
+  setErrorsStep,
   data,
   setData,
 }) {
@@ -126,8 +127,26 @@ export function StepsButtons({
         type="submit"
         onClick={async (e) => {
           e.preventDefault();
-          if (dataContext.confirm) {
-            if (!dataContext.confirm(infoStep, errorsStep)) {
+          if (dataContext.order !== dataContext.numberSteps - 2) {
+            if (dataContext.confirm) {
+              if (!dataContext.confirm(infoStep, errorsStep)) {
+                fillDataInfo(
+                  fillData,
+                  infoStep,
+                  setData,
+                  dataContext.order,
+                  dataContext.setOrder,
+                  dataContext.currentStep,
+                  dataContext.setCurrentStep,
+                  dataContext.currentStepTemp,
+                  dataContext.setCurrentStepTemp
+                );
+              } else {
+                dataContext.setCurrentStepTemp(dataContext.currentStep);
+                dataContext.setCurrentStep(dataContext.order);
+              }
+            } else {
+              setErrorsStep({});
               fillDataInfo(
                 fillData,
                 infoStep,
@@ -139,23 +158,10 @@ export function StepsButtons({
                 dataContext.currentStepTemp,
                 dataContext.setCurrentStepTemp
               );
-            } else {
-              dataContext.setCurrentStepTemp(dataContext.currentStep);
-              dataContext.setCurrentStep(dataContext.order);
-              console.log(fillData);
             }
           } else {
-            fillDataInfo(
-              fillData,
-              infoStep,
-              setData,
-              dataContext.order,
-              dataContext.setOrder,
-              dataContext.currentStep,
-              dataContext.setCurrentStep,
-              dataContext.currentStepTemp,
-              dataContext.setCurrentStepTemp
-            );
+            dataContext.setOrder(dataContext.order + 1);
+            console.log("Thank you.");
           }
         }}
       >

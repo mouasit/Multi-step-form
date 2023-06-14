@@ -75,7 +75,7 @@ function App() {
               <AddOns setInfoStep={setInfoStep} info={data} />
             </StepsItem>
             <StepsItem>
-              <FinishingUp />
+              <FinishingUp info={data} />
             </StepsItem>
             <StepsItem>
               <ThankYou />
@@ -91,6 +91,7 @@ function App() {
               nameConfirmation="confirm"
               infoStep={infoStep}
               errorsStep={errorsStep}
+              setErrorsStep={setErrorsStep}
               data={data}
               setData={setData}
             ></StepsButtons>

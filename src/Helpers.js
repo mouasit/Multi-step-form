@@ -51,5 +51,4 @@ export async function fillDataInfo(
   }
   setData(objectData);
   setOrder(order + 1);
-  console.log(objectData);
 }
